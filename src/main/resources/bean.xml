@@ -4,6 +4,75 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--把对象的创建交给spring来管理-->
-    <bean id="accountService" class="com.user.service.impl.AccountServiceImpl"></bean>
+
+    <!--方法二:使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存到spring容器中）-->
+    <!--指定工厂类的class路径-->
+    <!--<bean id="serviceFactory" class="com.user.factory.GetAccountService"></bean>
+    <bean id="accountService" factory-bean="serviceFactory" factory-method="getAccountService01"></bean>-->
+
+    <!--静态方法创建-->
+    <!--<bean id="accountService" class="com.user.factory.GetAccountService" factory-method="getAccountService02"></bean>-->
+
+    <!--无参构造的方式   scope可以选单例模式(默认）和多例模式-->
+    <!--<bean id="acccountService" class="com.user.service.impl.AccountServiceImpl01"></bean>-->
+
+    <!--有参构造-->
+   <!-- <bean id="accountService" class="com.user.service.impl.AccountServiceImpl02">
+        <constructor-arg name="name" value="构造函数传参"></constructor-arg>
+        <constructor-arg name="age" value="17"></constructor-arg>
+        <constructor-arg name="birthday" ref="now"></constructor-arg>
+    </bean>-->
+
+    <!--set方法-->
+    <!--<bean id="accountService" class="com.user.service.impl.AccountServiceImpl02">
+        <property name="name" value="set方法传参"></property>
+        <property name="age" value="19"></property>
+        <property name="birthday" ref="now"></property>
+    </bean>-->
+    
+    <!--常用的数组集合类型传参-->
+    <bean id="accountService" class="com.user.service.impl.AccountServiceImpl03">
+        <property name="myStrs">
+            <array>
+                <value>array1</value>
+                <value>array2</value>
+                <value>array3</value>
+            </array>
+        </property>
+        <property name="myList">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+                <value>list3</value>
+            </list>
+        </property>
+        <property name="mySet">
+            <set>
+                <value>set1</value>
+                <value>set2</value>
+                <value>set3</value>
+            </set>
+        </property>
+        <property name="myMap">
+            <map>
+                <entry key="map1" value="value1"></entry>
+                <entry key="map2">
+                    <value>value2</value>
+                </entry>
+            </map>
+        </property>
+        <property name="myProps">
+            <props>
+                <prop key="prop1">propvalue1</prop>
+                <prop key="prop2">propvalue2</prop>
+                <prop key="prop3">propvalue3</prop>
+            </props>
+        </property>
+    </bean>
+    <!--配置一个日期对象-->
+    <bean id="now" class="java.util.Date">
+        <constructor-arg type="long" value="14700000"></constructor-arg>
+    </bean>
+
     <bean id="accountDAO" class="com.user.dao.impl.AccountDAOImpl"></bean>
 </beans>

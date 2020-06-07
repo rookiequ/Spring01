@@ -7,7 +7,7 @@ import com.user.service.AccountService;
 /**
  * @author zzq
  */
-public class AccountServiceImpl implements AccountService {
+public class AccountServiceImpl01 implements AccountService {
 
     //如果用单例，不能有共有的成员变量，类似这里的i
     int i=1;

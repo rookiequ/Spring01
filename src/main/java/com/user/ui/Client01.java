@@ -20,7 +20,7 @@ public class Client01 {
      * @param args
      */
     public static void main(String[] args) {
-//        AccountService accountService = new AccountServiceImpl();
+//        AccountService accountService = new AccountServiceImpl01();
         for(int i=0; i < 5; i++){
             AccountService accountService = (AccountService) AccountFactory01.getBean("accountService");
             accountService.saveAccount();
