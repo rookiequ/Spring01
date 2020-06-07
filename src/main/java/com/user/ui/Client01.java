@@ -7,7 +7,7 @@ import com.user.service.AccountService;
 /**
  * @author zzq
  */
-public class Client {
+public class Client01 {
     /**
      * 用工厂模式解耦的两个思路：
      * 1.尽量避免new的方式创建对象
